@@ -33,7 +33,7 @@ function Login(props) {
         JSON.stringify({ ...response.data })
       );
       setErrors({ password: "", email: "" });
-      props.history.push("/book/all");
+      props.history.push("/home");
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
