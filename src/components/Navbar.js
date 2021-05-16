@@ -21,6 +21,9 @@ export default function Navbar() {
       <Link className="navbar-brand" to="/about">
         <p>About</p>
       </Link>
+      <Link className="navbar-brand" to="/edit">
+        <p>Edit</p>
+      </Link>
       <p className="navbar-brand">{loggedUser.name}</p>
       <Link
         className="navbar-brand"

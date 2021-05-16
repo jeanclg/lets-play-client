@@ -10,6 +10,7 @@ import Messages from "./Messages";
 import Forum from "../routeComponents/Forum";
 import About from "./About";
 import PrivateRoute from "../routeComponents/auth/PrivateRoute";
+import ProfileEdit from "../routeComponents/auth/ProfileEdit";
 
 import { AuthContextComponent } from "../contexts/authContext";
 
@@ -26,6 +27,7 @@ function App() {
           <PrivateRoute exact path="/messages/:id" component={Messages} />
           <PrivateRoute exact path="/forum" component={Forum} />
           <PrivateRoute exact path="/about" component={About} />
+          <PrivateRoute exact path="/edit" component={ProfileEdit} />
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>
