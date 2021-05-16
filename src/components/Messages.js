@@ -70,15 +70,22 @@ function MessageList() {
           Send
         </button>
       </div>
-      <table className="table">
+      <table className="table table-hover">
         <tbody>
           {state.map((x) => {
             if (loggedUser._id === x.userSenderId._id) {
               return (
                 <tr key={x._id}>
                   <td>
-                    {x.userSenderId.name} diz: {x.message}
+                    <img
+                      src={x.userSenderId.image_url}
+                      style={{ height: "40px" }}
+                    />
                   </td>
+                  <td>
+                    <strong>{x.userSenderId.name} diz:</strong> {x.message}
+                  </td>
+                  <td>{x.data}</td>
                   <td>
                     <button
                       type="button"
@@ -95,8 +102,15 @@ function MessageList() {
               return (
                 <tr key={x._id}>
                   <td>
-                    {x.userSenderId.name} diz: {x.message}
+                    <img
+                      src={x.userSenderId.image_url}
+                      style={{ height: "40px" }}
+                    />
                   </td>
+                  <td>
+                    <strong>{x.userSenderId.name} diz:</strong> {x.message}
+                  </td>
+                  <td>{x.data}</td>
                 </tr>
               );
             }

@@ -14,7 +14,7 @@ function PostList() {
   const history = useHistory();
 
   useEffect(() => {
-    async function fetchBeers() {
+    async function fetchPosts() {
       try {
         const response = await api.get(`/post`);
         setState([...response.data]);
@@ -22,7 +22,7 @@ function PostList() {
         console.error(err);
       }
     }
-    fetchBeers();
+    fetchPosts();
   }, [id]);
 
   function handleChange(event) {
@@ -76,9 +76,13 @@ function PostList() {
             if (loggedUser._id === x.userId._id) {
               return (
                 <tr key={x._id}>
-                  <td>
-                    {x.userId.name} diz: {x.text}
+                <td>
+                    <img src={x.userId.image_url} style={{ height: "40px" }} />
                   </td>
+                  <td>
+                    <strong>{x.userId.name} diz:</strong> {x.text}
+                  </td>
+                  <td>{x.data}</td>
                   <td>
                     <button
                       type="button"
@@ -94,9 +98,13 @@ function PostList() {
             } else {
               return (
                 <tr key={x._id}>
-                  <td>
-                    {x.userId.name} diz: {x.text}
+                <td>
+                    <img src={x.userId.image_url} style={{ height: "40px" }} />
                   </td>
+                  <td>
+                    <strong>{x.userId.name} diz:</strong> {x.text}
+                  </td>
+                  <td>{x.data}</td>
                 </tr>
               );
             }
