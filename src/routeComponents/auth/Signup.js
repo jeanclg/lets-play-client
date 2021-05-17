@@ -35,16 +35,17 @@ function Signup(props) {
 
   function handleCheck(event) {
     gamesList = event.map((x) => x.Games);
+    setState({
+      ...state,
+      gamesList,
+    });
+    console.log(state);
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      setState({
-        ...state,
-        gamesList: gamesList,
-      });
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/auth/login");
