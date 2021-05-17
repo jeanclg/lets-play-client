@@ -1,11 +1,17 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import api from "../../apis/api";
 
 import { AuthContext } from "../../contexts/authContext";
 
 function Login(props) {
+  const history = useHistory();
   const authContext = useContext(AuthContext);
+  console.log(authContext);
+
+  if (authContext.loggedInUser) {
+    history.go(-2);
+  }
 
   const [state, setState] = useState({ password: "", email: "" });
   const [errors, setErrors] = useState({

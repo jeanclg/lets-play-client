@@ -17,9 +17,8 @@ import { AuthContextComponent } from "../contexts/authContext";
 function App() {
   return (
     <BrowserRouter>
-      
       <AuthContextComponent>
-      <Navbar />
+        <Navbar />
         <div className="container row" style={{ minHeight: "1200px" }}>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -30,8 +29,8 @@ function App() {
             <PrivateRoute exact path="/forum" component={Forum} />
             <PrivateRoute exact path="/edit" component={ProfileEdit} />
           </Switch>
-          </div>
-          <Footer />
+        </div>
+        <Footer />
       </AuthContextComponent>
     </BrowserRouter>
   );

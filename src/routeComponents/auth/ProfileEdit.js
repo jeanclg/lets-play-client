@@ -127,6 +127,7 @@ function ProfileEdit(props) {
               type="checkbox"
               id="inlineCheckbox1"
               value="option1"
+              name="1"
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
               1
@@ -138,6 +139,7 @@ function ProfileEdit(props) {
               type="checkbox"
               id="inlineCheckbox2"
               value="option2"
+              name="2"
             />
             <label className="form-check-label" htmlFor="inlineCheckbox2">
               2
@@ -149,6 +151,7 @@ function ProfileEdit(props) {
               type="checkbox"
               id="inlineCheckbox2"
               value="option2"
+              name="3"
             />
             <label className="form-check-label" htmlFor="inlineCheckbox2">
               3
@@ -160,6 +163,7 @@ function ProfileEdit(props) {
               type="checkbox"
               id="inlineCheckbox2"
               value="option2"
+              name="4"
             />
             <label className="form-check-label" htmlFor="inlineCheckbox2">
               4
@@ -171,6 +175,7 @@ function ProfileEdit(props) {
               type="checkbox"
               id="inlineCheckbox2"
               value="option2"
+              name="5"
             />
             <label className="form-check-label" htmlFor="inlineCheckbox2">
               5

@@ -7,7 +7,7 @@ function PostList() {
   const authContext = useContext(AuthContext);
   const loggedUser = authContext.loggedInUser.user;
   const [state, setState] = useState([]);
-  let msg = "";
+  const [message, setMessage] = useState("");
 
   // Equivalente a usar o props.match.params.id
   const { id } = useParams();
@@ -23,21 +23,21 @@ function PostList() {
       }
     }
     fetchPosts();
-  }, [id]);
+  }, [id, message]);
 
   function handleChange(event) {
-    msg = event.target.value;
+    setMessage(event.target.value);
   }
 
   async function handleSubmit(event) {
     try {
       event.preventDefault();
       const response = await api.post(`/user/${loggedUser._id}/post`, {
-        text: msg,
+        text: message,
       });
-
+      setMessage("");
       // Redireciona programaticamente para a URL '/'
-      history.push("/home");
+      // history.push("/home");
     } catch (err) {
       console.error(err);
     }
@@ -46,8 +46,7 @@ function PostList() {
   async function handleDelete(event) {
     try {
       const response = await api.delete(`/post/${event.target.name}`);
-      // Redireciona programaticamente para a URL '/'
-      history.push("/home");
+      setMessage(response);
     } catch (err) {
       console.error(err);
     }
@@ -73,57 +72,59 @@ function PostList() {
       </div>
       <table className="table table-hover">
         <tbody>
-          {state.map((x) => {
-            if (loggedUser._id === x.userId._id) {
-              return (
-                <tr key={x._id}>
-                  <td>
-                    <img
-                      src={x.userId.image_url}
-                      style={{ height: "40px", borderRadius: "50%" }}
-                    />
-                  </td>
-                  <td>
-                    <strong>{x.userId.name} diz:</strong> {x.text}
-                  </td>
-                  <td>{`${new Date(x.data).getDate()}/${
-                    new Date(x.data).getMonth() + 1
-                  }/${new Date(x.data).getFullYear()} ⠀${new Date(
-                    x.data
-                  ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={handleDelete}
-                      className="btn btn-outline-danger"
-                      name={x._id}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            } else {
-              return (
-                <tr key={x._id}>
-                  <td>
-                    <img
-                      src={x.userId.image_url}
-                      style={{ height: "40px", borderRadius: "50%" }}
-                    />
-                  </td>
-                  <td>
-                    <strong>{x.userId.name} diz:</strong> {x.text}
-                  </td>
-                  <td>{`${new Date(x.data).getDate()}/${
-                    new Date(x.data).getMonth() + 1
-                  }/${new Date(x.data).getFullYear()} ⠀${new Date(
-                    x.data
-                  ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
-                </tr>
-              );
-            }
-          })}
+          {state
+            .map((x) => {
+              if (loggedUser._id === x.userId._id) {
+                return (
+                  <tr key={x._id}>
+                    <td>
+                      <img
+                        src={x.userId.image_url}
+                        style={{ height: "40px", borderRadius: "50%" }}
+                      />
+                    </td>
+                    <td>
+                      <strong>{x.userId.name} diz:</strong> {x.text}
+                    </td>
+                    <td>{`${new Date(x.data).getDate()}/${
+                      new Date(x.data).getMonth() + 1
+                    }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                      x.data
+                    ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={handleDelete}
+                        className="btn btn-outline-danger"
+                        name={x._id}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              } else {
+                return (
+                  <tr key={x._id}>
+                    <td>
+                      <img
+                        src={x.userId.image_url}
+                        style={{ height: "40px", borderRadius: "50%" }}
+                      />
+                    </td>
+                    <td>
+                      <strong>{x.userId.name} diz:</strong> {x.text}
+                    </td>
+                    <td>{`${new Date(x.data).getDate()}/${
+                      new Date(x.data).getMonth() + 1
+                    }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                      x.data
+                    ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                  </tr>
+                );
+              }
+            })
+            .reverse()}
         </tbody>
       </table>
       <ul className="list-group"></ul>
