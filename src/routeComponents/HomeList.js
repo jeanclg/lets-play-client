@@ -6,7 +6,7 @@ function HomeList() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function fetchBeers() {
+    async function fetchUsers() {
       try {
         const response = await api.get("/users");
 
@@ -15,7 +15,7 @@ function HomeList() {
         console.error(err);
       }
     }
-    fetchBeers();
+    fetchUsers();
   }, []);
 
   return (
@@ -42,7 +42,7 @@ function HomeList() {
               return (
                 <tr key={user._id}>
                   <td>
-                    <img src={user.image_url} style={{ height: "40px" }} />
+                    <img src={user.image_url} style={{ height: "40px", borderRadius: "50%" }} />
                   </td>
                   <td>
                     <Link to={`/user/${user._id}`}>{user.name}</Link>

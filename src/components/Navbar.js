@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
@@ -18,25 +20,31 @@ export default function Navbar() {
       <Link className="navbar-brand" to={`/messages/${loggedUser._id}`}>
         <p>Messages</p>
       </Link>
-      <Link className="navbar-brand" to="/about">
-        <p>About</p>
-      </Link>
-      <Link className="navbar-brand" to="/edit">
-        <p>Edit</p>
-      </Link>
-      <p className="navbar-brand">{loggedUser.name}</p>
-      <Link
-        className="navbar-brand"
-        to="/"
-        onClick={(event) => {
-          event.preventDefault();
-          // Fazendo processo de Logout
-          setLoggedInUser({ user: {}, token: "" });
-          localStorage.removeItem("loggedInUser");
-        }}
-      >
-        <p>Logout</p>
-      </Link>
+
+      <Dropdown>
+        <Dropdown.Toggle variant="second" id="dropdown-basic">
+          <img
+            src={`https://ui-avatars.com/api/?name=${loggedInUser.user.name}&size=32&background=random`}
+            className="rounded-circle"
+            alt="Profile"
+          />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item to={`/user/${loggedUser._id}`} as={NavLink}>
+            Profile
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={(event) => {
+              event.preventDefault();
+              // Fazendo processo de Logout
+              setLoggedInUser({ user: {}, token: "" });
+              localStorage.removeItem("loggedInUser");
+            }}
+          >
+            Logout
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </nav>
   );
 }

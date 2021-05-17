@@ -57,15 +57,16 @@ function MessageList() {
     <div className="container">
       <div className="input-group">
         <textarea
-          className="input-group mb-3 mt-3"
+          className="input-group mb-2 mt-3"
           aria-label="With textarea"
+          placeholder=" Write here"
           name="message"
           onChange={handleChange}
         ></textarea>
         <button
           type="button"
           onClick={handleSubmit}
-          className="btn btn-primary"
+          className="btn btn-primary mb-3"
         >
           Send
         </button>
@@ -79,13 +80,17 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "40px" }}
+                      style={{ height: "40px", borderRadius: "50%" }}
                     />
                   </td>
                   <td>
                     <strong>{x.userSenderId.name} diz:</strong> {x.message}
                   </td>
-                  <td>{x.data}</td>
+                  <td>{`${new Date(x.data).getDate()}/${
+                    new Date(x.data).getMonth() + 1
+                  }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                    x.data
+                  ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
                   <td>
                     <button
                       type="button"
@@ -104,13 +109,17 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "40px" }}
+                      style={{ height: "40px", borderRadius: "50%" }}
                     />
                   </td>
                   <td>
                     <strong>{x.userSenderId.name} diz:</strong> {x.message}
                   </td>
-                  <td>{x.data}</td>
+                  <td>{`${new Date(x.data).getDate()}/${
+                    new Date(x.data).getMonth() + 1
+                  }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                    x.data
+                  ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
                 </tr>
               );
             }
