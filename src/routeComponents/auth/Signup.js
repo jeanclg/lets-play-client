@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../apis/api";
+import { Multiselect } from "multiselect-react-dropdown";
 
 function Signup(props) {
-  const [state, setState] = useState({ name: "", password: "", email: "" });
+  let gamesList = [];
+  const [state, setState] = useState({
+    name: "",
+    password: "",
+    email: "",
+    gamesList: [],
+  });
   const [errors, setErrors] = useState({
     name: null,
     email: null,
     password: null,
   });
+
+  const games = [
+    { Games: "Battle Royale", id: 1 },
+    { Games: "FPS", id: 2 },
+    { Games: "MMORPG", id: 3 },
+    { Games: "MOBA", id: 4 },
+  ];
+
+  const [options] = useState(games);
 
   function handleChange(event) {
     setState({
@@ -17,10 +33,18 @@ function Signup(props) {
     });
   }
 
+  function handleCheck(event) {
+    gamesList = event.map((x) => x.Games);
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
+      setState({
+        ...state,
+        gamesList: gamesList,
+      });
       const response = await api.post("/signup", state);
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/auth/login");
@@ -74,6 +98,16 @@ function Signup(props) {
             value={state.password}
             error={errors.password}
             onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="signupFormGames" className="form-label">
+            Choose your games
+          </label>
+          <Multiselect
+            options={options}
+            displayValue="Games"
+            onSelect={handleCheck}
           />
         </div>
         <button
