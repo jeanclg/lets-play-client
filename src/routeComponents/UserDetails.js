@@ -62,7 +62,7 @@ function UserDetails() {
           <div className="card-body">
             <h5 className="card-title">{state.name}</h5>
             <p className="card-text">{state.gamesList}</p>
-            <button type="button" class="btn btn-success">
+            <button type="button" className="btn btn-success">
               <Link style={{ color: "inherit" }} to={`/messages/${state._id}`}>
                 Message
               </Link>
