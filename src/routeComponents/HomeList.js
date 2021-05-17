@@ -42,7 +42,7 @@ function HomeList() {
               return (
                 <tr key={user._id}>
                   <td>
-                    <img src={user.image_url} style={{ height: "40px", borderRadius: "50%" }} />
+                    <img src={user.image_url} style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}} />
                   </td>
                   <td>
                     <Link to={`/user/${user._id}`}>{user.name}</Link>

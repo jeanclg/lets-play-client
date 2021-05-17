@@ -18,8 +18,10 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        <Navbar />
-        <div className="container row" style={{ minHeight: "1200px" }}>
+
+      <Navbar />
+        <div className="container" style={{ minHeight: "1200px" }}>
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/auth" component={AuthRouter} />

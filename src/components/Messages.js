@@ -77,7 +77,7 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "40px", borderRadius: "50%" }}
+                      style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}}
                     />
                   </td>
                   <td>
@@ -106,7 +106,7 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "40px", borderRadius: "50%" }}
+                      style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}}
                     />
                   </td>
                   <td>
