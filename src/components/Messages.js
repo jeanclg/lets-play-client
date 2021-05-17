@@ -7,7 +7,7 @@ function MessageList() {
   const authContext = useContext(AuthContext);
   const loggedUser = authContext.loggedInUser.user;
   const [state, setState] = useState([]);
-  let msg = "";
+  const [message, setMessage] = useState("");
 
   // Equivalente a usar o props.match.params.id
   const { id } = useParams();
@@ -23,21 +23,19 @@ function MessageList() {
       }
     }
     fetchBeers();
-  }, [id]);
+  }, [id, message]);
 
   function handleChange(event) {
-    msg = event.target.value;
+    setMessage(event.target.value);
   }
 
   async function handleSubmit(event) {
     try {
       event.preventDefault();
       const response = await api.post(`/user/${id}/message`, {
-        message: msg,
+        message: message,
       });
-
-      // Redireciona programaticamente para a URL '/'
-      history.push("/home");
+      setMessage("");
     } catch (err) {
       console.error(err);
     }
@@ -46,8 +44,7 @@ function MessageList() {
   async function handleDelete(event) {
     try {
       const response = await api.delete(`/message/${event.target.name}`);
-      // Redireciona programaticamente para a URL '/'
-      history.push("/home");
+      setMessage(response);
     } catch (err) {
       console.error(err);
     }
