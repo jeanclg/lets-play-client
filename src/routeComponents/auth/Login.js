@@ -9,10 +9,6 @@ function Login(props) {
   const authContext = useContext(AuthContext);
   console.log(authContext);
 
-  if (authContext.loggedInUser) {
-    history.go(-2);
-  }
-
   const [state, setState] = useState({ password: "", email: "" });
   const [errors, setErrors] = useState({
     email: null,

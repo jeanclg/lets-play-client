@@ -2,8 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import api from "../../apis/api";
+import { Multiselect } from "multiselect-react-dropdown";
 
 function ProfileEdit(props) {
+  let gamesList = [];
   const authContext = useContext(AuthContext);
   const loggedUser = authContext.loggedInUser.user;
   const [state, setState] = useState({
@@ -15,6 +17,15 @@ function ProfileEdit(props) {
     uploadedPosts: [],
     role: "",
   });
+
+  const games = [
+    { Games: "Battle Royale", id: 1 },
+    { Games: "FPS", id: 2 },
+    { Games: "MMORPG", id: 3 },
+    { Games: "MOBA", id: 4 },
+  ];
+
+  const [options] = useState(games);
 
   const history = useHistory();
 
@@ -37,6 +48,10 @@ function ProfileEdit(props) {
     } else {
       setState({ ...state, [event.target.name]: event.target.value });
     }
+  }
+
+  function handleCheck(event) {
+    gamesList = event.map((x) => x.Games);
   }
 
   async function handleFileUpload(file) {
@@ -69,6 +84,7 @@ function ProfileEdit(props) {
       const response = await api.put(`/user/${loggedUser._id}/edit`, {
         ...state,
         image_url: uploadedImageUrl,
+        gamesList,
       });
 
       // Redireciona programaticamente para a URL '/'
@@ -120,68 +136,11 @@ function ProfileEdit(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3 form-check">
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox1"
-              value="option1"
-              name="1"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              1
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox2"
-              value="option2"
-              name="2"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox2">
-              2
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox2"
-              value="option2"
-              name="3"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox2">
-              3
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox2"
-              value="option2"
-              name="4"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox2">
-              4
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="inlineCheckbox2"
-              value="option2"
-              name="5"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox2">
-              5
-            </label>
-          </div>
-        </div>
+        <Multiselect
+          options={options}
+          displayValue="Games"
+          onSelect={handleCheck}
+        />
         <div className="form-group">
           <label htmlFor="userFormImage">Profile Picture</label>
           <input
