@@ -35,6 +35,7 @@ function HomeList() {
               <th scope="col"></th>
               <th scope="col">Name</th>
               <th scope="col">Games</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -42,21 +43,31 @@ function HomeList() {
               return (
                 <tr key={user._id}>
                   <td>
-                    <img src={user.image_url} style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}} />
+                    <img
+                      src={user.image_url}
+                      style={{
+                        height: "50px",
+                        display: "flex",
+                        width: "50px",
+                        position: "relative",
+                        overflow: "hidden",
+                        borderRadius: "50%",
+                      }}
+                    />
                   </td>
                   <td>
                     <Link to={`/user/${user._id}`}>{user.name}</Link>
                   </td>
                   <td>{`${user.gamesList}`} </td>
                   <td>
-                    <button type="button" className="btn btn-success">
-                      <Link
-                        style={{ color: "inherit" }}
-                        to={`/messages/${user._id}`}
-                      >
+                    <Link
+                      style={{ color: "inherit" }}
+                      to={`/messages/${user._id}`}
+                    >
+                      <button type="button" className="btn btn-success">
                         Message
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               );

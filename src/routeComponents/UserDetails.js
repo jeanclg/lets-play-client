@@ -36,16 +36,16 @@ function UserDetails() {
           <div className="card-body">
             <h5 className="card-title">{state.name}</h5>
             <p className="card-text">{state.gamesList}</p>
-            <button type="button" className="btn btn-success">
-              <Link style={{ color: "inherit" }} to={`/messages/${state._id}`}>
+            <Link style={{ color: "inherit" }} to={`/messages/${state._id}`}>
+              <button type="button" className="btn btn-success">
                 Message
-              </Link>
-            </button>
-            <button type="button" className="btn btn-warning">
-              <Link style={{ color: "inherit" }} to={`/edit`}>
+              </button>
+            </Link>
+            <Link style={{ color: "inherit" }} to={`/edit`}>
+              <button type="button" className="btn btn-warning">
                 Edit
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

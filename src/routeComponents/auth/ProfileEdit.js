@@ -110,6 +110,7 @@ function ProfileEdit(props) {
             onChange={handleChange}
           />
         </div>
+        <hr />
         <div className="mb-3">
           <label htmlFor="signupFormEmail" className="form-label">
             E-mail Address
@@ -123,6 +124,7 @@ function ProfileEdit(props) {
             onChange={handleChange}
           />
         </div>
+        <hr />
         <div className="mb-3">
           <label htmlFor="signupFormPassword" className="form-label">
             Password
@@ -136,11 +138,18 @@ function ProfileEdit(props) {
             onChange={handleChange}
           />
         </div>
-        <Multiselect
-          options={options}
-          displayValue="Games"
-          onSelect={handleCheck}
-        />
+        <hr />
+        <div>
+          <label htmlFor="signupFormPassword" className="form-label">
+            Games genre
+          </label>
+          <Multiselect
+            options={options}
+            displayValue="Games"
+            onSelect={handleCheck}
+          />
+        </div>
+<hr/>
         <div className="form-group">
           <label htmlFor="userFormImage">Profile Picture</label>
           <input
@@ -151,6 +160,7 @@ function ProfileEdit(props) {
             onChange={handleChange}
           />
         </div>
+        <hr/>
         <button
           type="button"
           onClick={handleSubmit}
