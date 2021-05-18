@@ -20,7 +20,7 @@ function App() {
       <AuthContextComponent>
 
       <Navbar />
-        <div className="container" style={{ minHeight: "1200px" }}>
+        <div className="container" style={{ minHeight: "700px" }}>
 
           <Switch>
             <Route exact path="/" component={Home} />
