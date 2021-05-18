@@ -26,21 +26,20 @@ function UserDetails() {
 
   if (loggedUser._id === id) {
     return (
-      <div className="container">
-        <div className="card" style={{ width: "18rem" }}>
+      <div className="container justify-content-center d-flex align-items-center">
+        <div
+          className="card align-items-center mt-5"
+          style={{ width: "34rem", backgroundColor: "#3dadff" }}
+        >
           <img
             src={state.image_url}
             className="card-img-top"
             alt="User Profile"
           />
-          <div className="card-body">
+          <div className="card-body text-center">
             <h5 className="card-title">{state.name}</h5>
-            <p className="card-text">{state.gamesList}</p>
-            <Link style={{ color: "inherit" }} to={`/messages/${state._id}`}>
-              <button type="button" className="btn btn-success">
-                Message
-              </button>
-            </Link>
+            <p className="card-text btn btn-outline-dark">{state.gamesList}</p>
+            {/* {state.gamesList.map((x)=> <p className="card-text btn btn-outline-dark">{x}</p>) }  */}
             <Link style={{ color: "inherit" }} to={`/edit`}>
               <button type="button" className="btn btn-warning">
                 Edit
@@ -53,7 +52,10 @@ function UserDetails() {
   } else {
     return (
       <div className="container">
-        <div className="card" style={{ width: "18rem" }}>
+        <div
+          className="card"
+          style={{ width: "34rem", backgroundColor: "#3dadff" }}
+        >
           <img
             src={state.image_url}
             className="card-img-top"
