@@ -97,7 +97,7 @@ function PostList() {
                       <td>
                         <Link
                           style={{ color: "inherit" }}
-                          to={`/user/${x.userId._id}npm star`}
+                          to={`/user/${x.userId._id}`}
                         >
                           <strong>{x.userId.name} diz:</strong>
                         </Link>{" "}
