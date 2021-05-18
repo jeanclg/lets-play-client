@@ -4,8 +4,8 @@ import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
 import "../assets/styles/index.css"
 
-import ironhack from "../components/ironhack-logo.png";
-import Github from "../components/Github_logo-removebg-preview.png";
+import ironhack from "../images/ironhack-logo.png";
+import Github from "../images/Github_logo-removebg-preview.png";
 
 export default function Footer() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);

@@ -95,7 +95,7 @@ function MessageList() {
                         }}
                       />
                     </td>
-                    <td>
+                    <td style={{ maxWidth: "181.4px" }}>
                       <strong>{x.userSenderId.name} diz:</strong> {x.message}
                     </td>
                     <td>{`${new Date(x.data).getDate()}/${
@@ -131,7 +131,7 @@ function MessageList() {
                         }}
                       />
                     </td>
-                    <td>
+                    <td style={{ maxWidth: "181.4px" }}>
                       <strong>{x.userSenderId.name} diz:</strong> {x.message}
                     </td>
                     <td>{`${new Date(x.data).getDate()}/${

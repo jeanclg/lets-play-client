@@ -1,19 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../images/logo_lets_play-removebg-preview.png";
 
 function Home() {
   return (
-    <div className="text-center">
-      <img
-        src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/84/original/logo-ironhack-blue.png"
-        alt="ironhack logo"
-      />
-      <h1>React IronPlate</h1>
-      <p>This is the homepage</p>
+    <div className="h-100  align-items-center">
       <div className="d-flex flex-column align-items-center">
-        <Link className="btn btn-lg btn-primary" to="/auth/signup">
-          Signup here!
-        </Link>
+        <img src={Logo} width="400" height="400" alt="LetsPlay logo" />
+
+        <p className="text-monospace">Connect with gamers, make friends!</p>
+        <div className="d-flex flex-column align-items-center">
+          <Link
+            className="btn btn-lg btn-primary"
+            style={{ backgroundColor: "#3dadff" }}
+            to="/auth/signup"
+          >
+            Signup here!
+          </Link>
+        </div>
       </div>
     </div>
   );

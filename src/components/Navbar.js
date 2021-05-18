@@ -4,6 +4,7 @@ import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
+import Logo from "../images/logo_lets_play-removebg-preview.png"
 
 export default function Navbar() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
@@ -14,7 +15,13 @@ export default function Navbar() {
         backgroundColor: "#3dadff",
       }}>
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/home">Home</Link>
+    <Link className="navbar-brand" to="/home"><img
+          src={Logo}
+          width="60"
+          height="auto"
+          className="d-inline-block align-top"
+          alt="logo img"/>
+          </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
