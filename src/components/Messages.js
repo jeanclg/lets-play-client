@@ -14,7 +14,7 @@ function MessageList() {
   const history = useHistory();
 
   useEffect(() => {
-    async function fetchBeers() {
+    async function fetchMessages() {
       try {
         const response = await api.get(`/${id}/messages`);
         setState([...response.data]);
@@ -22,7 +22,7 @@ function MessageList() {
         console.error(err);
       }
     }
-    fetchBeers();
+    fetchMessages();
   }, [id, message]);
 
   function handleChange(event) {
@@ -45,6 +45,7 @@ function MessageList() {
     try {
       const response = await api.delete(`/message/${event.target.name}`);
       setMessage(response);
+      setMessage("");
     } catch (err) {
       console.error(err);
     }
@@ -52,22 +53,21 @@ function MessageList() {
 
   return (
     <div className="container">
-      <div className="input-group">
-        <textarea
-          className="input-group mb-2 mt-3"
-          aria-label="With textarea"
-          placeholder=" Write here"
-          name="message"
-          onChange={handleChange}
-        ></textarea>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="btn btn-primary mb-3"
-        >
-          Send
-        </button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <input
+            className="form-control mb-2 mt-3"
+            placeholder=" Write here"
+            name="message"
+            onChange={handleChange}
+            value={message}
+            style={{ height: "100px" }}
+          />
+          <button type="button" type="submit" className="btn btn-primary mb-3">
+            Send
+          </button>
+        </div>
+      </form>
       <table className="table table-hover">
         <tbody>
           {state.map((x) => {
@@ -77,7 +77,14 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}}
+                      style={{
+                        height: "50px",
+                        display: "flex",
+                        width: "50px",
+                        position: "relative",
+                        overflow: "hidden",
+                        borderRadius: "50%",
+                      }}
                     />
                   </td>
                   <td>
@@ -106,7 +113,14 @@ function MessageList() {
                   <td>
                     <img
                       src={x.userSenderId.image_url}
-                      style={{ height: "50px", display: "flex", width: "50px", position: "relative", overflow: "hidden", borderRadius: "50%"}}
+                      style={{
+                        height: "50px",
+                        display: "flex",
+                        width: "50px",
+                        position: "relative",
+                        overflow: "hidden",
+                        borderRadius: "50%",
+                      }}
                     />
                   </td>
                   <td>

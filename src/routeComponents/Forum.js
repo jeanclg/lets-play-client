@@ -36,8 +36,6 @@ function PostList() {
         text: message,
       });
       setMessage("");
-      // Redireciona programaticamente para a URL '/'
-      // history.push("/home");
     } catch (err) {
       console.error(err);
     }
@@ -47,6 +45,7 @@ function PostList() {
     try {
       const response = await api.delete(`/post/${event.target.name}`);
       setMessage(response);
+      setMessage("");
     } catch (err) {
       console.error(err);
     }
@@ -61,6 +60,7 @@ function PostList() {
           placeholder=" Write here"
           name="message"
           onChange={handleChange}
+          value={message}
         ></textarea>
         <button
           type="button"
@@ -91,7 +91,13 @@ function PostList() {
                       />
                     </td>
                     <td>
-                      <strong>{x.userId.name} diz:</strong> {x.text}
+                      <Link
+                        style={{ color: "inherit" }}
+                        to={`/user/${x.userId._id}`}
+                      >
+                        <strong>{x.userId.name} diz:</strong>
+                      </Link>{" "}
+                      {x.text}
                     </td>
                     <td>{`${new Date(x.data).getDate()}/${
                       new Date(x.data).getMonth() + 1
@@ -127,7 +133,13 @@ function PostList() {
                       />
                     </td>
                     <td>
-                      <strong>{x.userId.name} diz:</strong> {x.text}
+                      <Link
+                        style={{ color: "inherit" }}
+                        to={`/user/${x.userId._id}`}
+                      >
+                        <strong>{x.userId.name} diz:</strong>
+                      </Link>{" "}
+                      {x.text}
                     </td>
                     <td>{`${new Date(x.data).getDate()}/${
                       new Date(x.data).getMonth() + 1
