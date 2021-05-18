@@ -18,21 +18,15 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-
-      <Navbar />
-        <div className="container" style={{ minHeight: "700px"}}>
-
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/auth" component={AuthRouter} />
-            <PrivateRoute exact path="/home" component={HomeList} />
-            <PrivateRoute exact path="/user/:id" component={UserDetails} />
-            <PrivateRoute exact path="/messages/:id" component={Messages} />
-            <PrivateRoute exact path="/forum" component={Forum} />
-            <PrivateRoute exact path="/edit" component={ProfileEdit} />
-          </Switch>
-        </div>
-        <Footer />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/auth" component={AuthRouter} />
+          <PrivateRoute exact path="/home" component={HomeList} />
+          <PrivateRoute exact path="/user/:id" component={UserDetails} />
+          <PrivateRoute exact path="/messages/:id" component={Messages} />
+          <PrivateRoute exact path="/forum" component={Forum} />
+          <PrivateRoute exact path="/edit" component={ProfileEdit} />
+        </Switch>
       </AuthContextComponent>
     </BrowserRouter>
   );

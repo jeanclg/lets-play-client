@@ -3,6 +3,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import api from "../../apis/api";
 import { Multiselect } from "multiselect-react-dropdown";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 function ProfileEdit(props) {
   let gamesList = [];
@@ -95,80 +97,84 @@ function ProfileEdit(props) {
   }
 
   return (
-    <div className="container">
-      <form>
-        <div className="mb-3">
-          <label htmlFor="signupFormName" className="form-label">
-            Name
-          </label>
-          <input
-            className="form-control"
-            type="text"
-            name="name"
-            id="signupFormName"
-            value={state.name}
-            onChange={handleChange}
-          />
-        </div>
-        <hr />
-        <div className="mb-3">
-          <label htmlFor="signupFormEmail" className="form-label">
-            E-mail Address
-          </label>
-          <input
-            className="form-control"
-            type="email"
-            name="email"
-            id="signupFormEmail"
-            value={state.email}
-            onChange={handleChange}
-          />
-        </div>
-        <hr />
-        <div className="mb-3">
-          <label htmlFor="signupFormPassword" className="form-label">
-            Password
-          </label>
-          <input
-            className="form-control"
-            type="password"
-            name="password"
-            id="signupFormPassword"
-            value={state.password}
-            onChange={handleChange}
-          />
-        </div>
-        <hr />
-        <div>
-          <label htmlFor="signupFormPassword" className="form-label">
-            Games genre
-          </label>
-          <Multiselect
-            options={options}
-            displayValue="Games"
-            onSelect={handleCheck}
-          />
-        </div>
-<hr/>
-        <div className="form-group">
-          <label htmlFor="userFormImage">Profile Picture</label>
-          <input
-            type="file"
-            className="form-control"
-            id="userFormImage"
-            name="image_url"
-            onChange={handleChange}
-          />
-        </div>
-        <hr/>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
-      </form>
+    <div>
+      <Navbar />
+      <div className="container mt-5" style={{ minHeight: "700px" }}>
+        <form>
+          <div className="mb-3">
+            <label htmlFor="signupFormName" className="form-label">
+              Name
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              id="signupFormName"
+              value={state.name}
+              onChange={handleChange}
+            />
+          </div>
+          <hr />
+          <div className="mb-3">
+            <label htmlFor="signupFormEmail" className="form-label">
+              E-mail Address
+            </label>
+            <input
+              className="form-control"
+              type="email"
+              name="email"
+              id="signupFormEmail"
+              value={state.email}
+              onChange={handleChange}
+            />
+          </div>
+          <hr />
+          <div className="mb-3">
+            <label htmlFor="signupFormPassword" className="form-label">
+              Password
+            </label>
+            <input
+              className="form-control"
+              type="password"
+              name="password"
+              id="signupFormPassword"
+              value={state.password}
+              onChange={handleChange}
+            />
+          </div>
+          <hr />
+          <div>
+            <label htmlFor="signupFormPassword" className="form-label">
+              Games genre
+            </label>
+            <Multiselect
+              options={options}
+              displayValue="Games"
+              onSelect={handleCheck}
+            />
+          </div>
+          <hr />
+          <div className="form-group">
+            <label htmlFor="userFormImage">Profile Picture</label>
+            <input
+              type="file"
+              className="form-control"
+              id="userFormImage"
+              name="image_url"
+              onChange={handleChange}
+            />
+          </div>
+          <hr />
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 }
