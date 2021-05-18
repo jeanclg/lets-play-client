@@ -25,6 +25,9 @@ function ProfileEdit(props) {
     { Games: "FPS", id: 2 },
     { Games: "MMORPG", id: 3 },
     { Games: "MOBA", id: 4 },
+    { Games: "RACE", id: 5 },
+    { Games: "SOCCER", id: 6 },
+    { Games: "OTHER", id: 7 }
   ];
 
   const [options] = useState(games);

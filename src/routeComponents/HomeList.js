@@ -18,6 +18,9 @@ function HomeList() {
     { Games: "FPS", id: 2 },
     { Games: "MMORPG", id: 3 },
     { Games: "MOBA", id: 4 },
+    { Games: "RACE", id: 5 },
+    { Games: "SOCCER", id: 6 },
+    { Games: "OTHER", id: 7 }
   ];
 
   const [options] = useState(games);
@@ -61,8 +64,8 @@ function HomeList() {
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Games</th>
+                <th scope="col">User</th>
+                <th scope="col">Games genre</th>
                 <th scope="col"></th>
               </tr>
             </thead>

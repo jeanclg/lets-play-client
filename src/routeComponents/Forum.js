@@ -94,20 +94,20 @@ function PostList() {
                           }}
                         />
                       </td>
-                      <td>
+                      <td className="text-break" style= {{maxWidth: "300px"}}>
                         <Link
                           style={{ color: "inherit" }}
-                          to={`/user/${x.userId._id}npm star`}
+                          to={`/user/${x.userId._id}`}
                         >
                           <strong>{x.userId.name} diz:</strong>
                         </Link>{" "}
-                        {x.text}
+                        <p className="text-break">{x.text}</p>
                       </td>
                       <td>{`${new Date(x.data).getDate()}/${
                         new Date(x.data).getMonth() + 1
-                      }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                      }/${new Date(x.data).getFullYear()} ⠀${String(new Date(
                         x.data
-                      ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                      ).getHours()).padStart(2,"0")}:${String(new Date(x.data).getMinutes()).padStart(2,"0")}`}</td>
                       <td>
                         <button
                           type="button"
@@ -136,20 +136,20 @@ function PostList() {
                           }}
                         />
                       </td>
-                      <td>
+                      <td  style= {{maxWidth: "300px"}}>
                         <Link
                           style={{ color: "inherit" }}
                           to={`/user/${x.userId._id}`}
                         >
                           <strong>{x.userId.name} diz:</strong>
                         </Link>{" "}
-                        {x.text}
+                        <p className="text-break">{x.text}</p>
                       </td>
                       <td>{`${new Date(x.data).getDate()}/${
                         new Date(x.data).getMonth() + 1
-                      }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                      }/${new Date(x.data).getFullYear()} ⠀${String(new Date(
                         x.data
-                      ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                      ).getHours()).padStart(2,"0")}:${String(new Date(x.data).getMinutes()).padStart(2,"0")}`}</td>
                     </tr>
                   );
                 }
