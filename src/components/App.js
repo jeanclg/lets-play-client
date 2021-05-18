@@ -18,8 +18,6 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        {/* <Navbar /> */}
-        {/* <div className="container" style={{ minHeight: "700px" }}> */}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/auth" component={AuthRouter} />
@@ -29,8 +27,6 @@ function App() {
           <PrivateRoute exact path="/forum" component={Forum} />
           <PrivateRoute exact path="/edit" component={ProfileEdit} />
         </Switch>
-        {/* </div> */}
-        {/* <Footer /> */}
       </AuthContextComponent>
     </BrowserRouter>
   );
