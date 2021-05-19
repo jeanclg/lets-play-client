@@ -6,7 +6,7 @@ import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-import Logo from "../images/logo_lets_play-removebg-preview.png";
+import Logo from "../images/Letsplaynav2.png";
 
 export default function NavbarComponent() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
@@ -17,7 +17,7 @@ export default function NavbarComponent() {
       collapseOnSelect
       expand="lg"
       variant="dark"
-      style={{ backgroundColor: "#00adb5"}}
+      style={{ backgroundColor: "#00adb5" }}
     >
       <Navbar.Brand>
         <Link className="navbar-brand" to="/home">
@@ -52,16 +52,26 @@ export default function NavbarComponent() {
         </Nav>
       </Navbar.Collapse>
       <Nav>
-        <Dropdown>
-          <Dropdown.Toggle variant="second" id="dropdown-basic">
+        <Dropdown className="mr-5">
+          <Dropdown.Toggle
+            className="mr-5"
+            variant="second"
+            id="dropdown-basic"
+          >
             <img
               src={`https://ui-avatars.com/api/?name=${loggedInUser.user.name}&size=32&background=random`}
               className="rounded-circle"
               alt="Profile"
             />
           </Dropdown.Toggle>
-          <Dropdown.Menu style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}>
-            <Dropdown.Item to={`/user/${loggedUser._id}`} as={NavLink} style={{ color: "#eeeeee" }}>
+          <Dropdown.Menu
+            style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
+          >
+            <Dropdown.Item
+              to={`/user/${loggedUser._id}`}
+              as={NavLink}
+              style={{ color: "#eeeeee" }}
+            >
               Profile
             </Dropdown.Item>
             <Dropdown.Item
@@ -70,7 +80,8 @@ export default function NavbarComponent() {
                 // Fazendo processo de Logout
                 setLoggedInUser({ user: {}, token: "" });
                 localStorage.removeItem("loggedInUser");
-              }} style={{ color: "#eeeeee" }}
+              }}
+              style={{ color: "#eeeeee" }}
             >
               Logout
             </Dropdown.Item>

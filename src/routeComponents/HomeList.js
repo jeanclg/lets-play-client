@@ -48,7 +48,7 @@ function HomeList() {
   }, [list]);
 
   return (
-    <div style={{ backgroundColor: "#303841", color: "#eeeeee" }}>
+    <div style={{ backgroundColor: "#303841" }}>
       <NavbarComponent />
       <div className="container" style={{ minHeight: "700px" }}>
         <div className="input-group mb-3 mt-3">

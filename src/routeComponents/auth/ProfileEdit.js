@@ -100,12 +100,16 @@ function ProfileEdit(props) {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#303841" }}>
       <NavbarComponent />
       <div className="container mt-5" style={{ minHeight: "700px" }}>
         <form>
           <div className="mb-3">
-            <label htmlFor="signupFormName" className="form-label">
+            <label
+              htmlFor="signupFormName"
+              className="form-label"
+              style={{ color: "#eeeeee" }}
+            >
               Name
             </label>
             <input
@@ -119,7 +123,11 @@ function ProfileEdit(props) {
           </div>
           <hr />
           <div className="mb-3">
-            <label htmlFor="signupFormEmail" className="form-label">
+            <label
+              htmlFor="signupFormEmail"
+              className="form-label"
+              style={{ color: "#eeeeee" }}
+            >
               E-mail Address
             </label>
             <input
@@ -133,7 +141,11 @@ function ProfileEdit(props) {
           </div>
           <hr />
           <div className="mb-3">
-            <label htmlFor="signupFormPassword" className="form-label">
+            <label
+              htmlFor="signupFormPassword"
+              className="form-label"
+              style={{ color: "#eeeeee" }}
+            >
               Password
             </label>
             <input
@@ -147,7 +159,11 @@ function ProfileEdit(props) {
           </div>
           <hr />
           <div>
-            <label htmlFor="signupFormPassword" className="form-label">
+            <label
+              htmlFor="signupFormPassword"
+              className="form-label"
+              style={{ color: "#eeeeee" }}
+            >
               Games genre
             </label>
             <Multiselect
@@ -162,7 +178,9 @@ function ProfileEdit(props) {
           </div>
           <hr />
           <div className="form-group">
-            <label htmlFor="userFormImage">Profile Picture</label>
+            <label htmlFor="userFormImage" style={{ color: "#eeeeee" }}>
+              Profile Picture
+            </label>
             <input
               type="file"
               className="form-control"
@@ -176,6 +194,7 @@ function ProfileEdit(props) {
             type="button"
             onClick={handleSubmit}
             className="btn btn-primary"
+            style={{ color: "#eeeeee", backgroundColor: "#00adb5" }}
           >
             Submit
           </button>
