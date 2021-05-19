@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import api from "../apis/api";
-import Navbar from "../components/Navbar";
+import NavbarComponent from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function MessageList() {
@@ -54,8 +54,8 @@ function MessageList() {
   }
 
   return (
-    <div>
-      <Navbar />
+    <div style={{ backgroundColor: "#303841", color: "#eeeeee" }}>
+      <NavbarComponent />
       <div className="container" style={{ minHeight: "700px" }}>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -71,6 +71,7 @@ function MessageList() {
               type="button"
               type="submit"
               className="btn btn-primary mb-3"
+              style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
             >
               Send
             </button>
@@ -95,19 +96,21 @@ function MessageList() {
                         }}
                       />
                     </td>
-                    <td style={{ maxWidth: "181.4px" }}>
+                    <td style={{ maxWidth: "181.4px", color: "#eeeeee" }}>
                       <strong>{x.userSenderId.name} diz:</strong> {x.message}
                     </td>
-                    <td>{`${new Date(x.data).getDate()}/${
-                      new Date(x.data).getMonth() + 1
-                    }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                    <td style={{ color: "#eeeeee" }}>{`${new Date(
                       x.data
-                    ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                    ).getDate()}/${new Date(x.data).getMonth() + 1}/${new Date(
+                      x.data
+                    ).getFullYear()} ⠀${new Date(x.data).getHours()}:${new Date(
+                      x.data
+                    ).getMinutes()}`}</td>
                     <td>
                       <button
                         type="button"
                         onClick={handleDelete}
-                        className="btn btn-outline-danger"
+                        className="btn btn-danger"
                         name={x._id}
                       >
                         Delete
@@ -131,14 +134,16 @@ function MessageList() {
                         }}
                       />
                     </td>
-                    <td style={{ maxWidth: "181.4px" }}>
+                    <td style={{ maxWidth: "181.4px", color: "#eeeeee" }}>
                       <strong>{x.userSenderId.name} diz:</strong> {x.message}
                     </td>
-                    <td>{`${new Date(x.data).getDate()}/${
-                      new Date(x.data).getMonth() + 1
-                    }/${new Date(x.data).getFullYear()} ⠀${new Date(
+                    <td style={{ color: "#eeeeee" }}>{`${new Date(
                       x.data
-                    ).getHours()}:${new Date(x.data).getMinutes()}`}</td>
+                    ).getDate()}/${new Date(x.data).getMonth() + 1}/${new Date(
+                      x.data
+                    ).getFullYear()} ⠀${new Date(x.data).getHours()}:${new Date(
+                      x.data
+                    ).getMinutes()}`}</td>
                   </tr>
                 );
               }

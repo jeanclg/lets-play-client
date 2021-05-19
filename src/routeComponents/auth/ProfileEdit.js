@@ -3,7 +3,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import api from "../../apis/api";
 import { Multiselect } from "multiselect-react-dropdown";
-import Navbar from "../../components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 function ProfileEdit(props) {
@@ -101,7 +101,7 @@ function ProfileEdit(props) {
 
   return (
     <div>
-      <Navbar />
+      <NavbarComponent />
       <div className="container mt-5" style={{ minHeight: "700px" }}>
         <form>
           <div className="mb-3">

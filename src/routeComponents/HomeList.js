@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../apis/api";
 import { Multiselect } from "multiselect-react-dropdown";
 import { AuthContext } from "../contexts/authContext";
-import Navbar from "../components/Navbar";
+import NavbarComponent from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function HomeList() {
@@ -48,8 +48,8 @@ function HomeList() {
   }, [list]);
 
   return (
-    <div>
-      <Navbar />
+    <div style={{ backgroundColor: "#303841", color: "#eeeeee" }}>
+      <NavbarComponent />
       <div className="container" style={{ minHeight: "700px" }}>
         <div className="input-group mb-3 mt-3">
           <Multiselect
@@ -60,20 +60,20 @@ function HomeList() {
           />
         </div>
         <div className="input-group mb-3 mt-3">
-          <table className="table table-striped table-hover">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">User</th>
-                <th scope="col">Games genre</th>
+                <th scope="col" style={{color: "#eeeeee" }}>User</th>
+                <th scope="col" style={{color: "#eeeeee" }}>Games genre</th>
                 <th scope="col"></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{color: "#eeeeee" }}>
               {list.map((user) => {
                 if (user._id !== loggedUser._id)
                   return (
-                    <tr key={user._id}>
+                    <tr key={user._id} >
                       <td>
                         <img
                           src={user.image_url}
@@ -88,7 +88,7 @@ function HomeList() {
                         />
                       </td>
                       <td>
-                        <Link to={`/user/${user._id}`}>{user.name}</Link>
+                        <Link to={`/user/${user._id}`} style={{color: "#eeeeee", textDecoration:"none" }}>{user.name}</Link>
                       </td>
                       <td>{`${user.gamesList}`} </td>
                       <td>

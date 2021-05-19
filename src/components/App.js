@@ -5,8 +5,6 @@ import Home from "../routeComponents/Home";
 import AuthRouter from "../routeComponents/auth/AuthRouter";
 import HomeList from "../routeComponents/HomeList";
 import UserDetails from "../routeComponents/UserDetails";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 import Messages from "./Messages";
 import Forum from "../routeComponents/Forum";
 import PrivateRoute from "../routeComponents/auth/PrivateRoute";

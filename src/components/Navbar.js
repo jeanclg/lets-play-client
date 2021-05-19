@@ -4,39 +4,55 @@ import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { useContext } from "react";
-import Logo from "../images/logo_lets_play-removebg-preview.png"
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-export default function Navbar() {
+import Logo from "../images/logo_lets_play-removebg-preview.png";
+
+export default function NavbarComponent() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const authContext = useContext(AuthContext);
   const loggedUser = authContext.loggedInUser.user;
   return (
-<nav className="navbar navbar-expand-lg navbar-light" style={{
-        backgroundColor: "#3dadff",
-      }}>
-  <div className="container-fluid">
-    <Link className="navbar-brand" to="/home"><img
-          src={Logo}
-          width="60"
-          height="auto"
-          className="d-inline-block align-top"
-          alt="logo img"/>
-          </Link>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link className="nav-link" to={`/messages/${loggedUser._id}`}>Messages</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/forum">Forum</Link>
-        </li>
-      </ul>
-    </div>
-    <div>
-    <Dropdown>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      style={{ backgroundColor: "#00adb5"}}
+    >
+      <Navbar.Brand>
+        <Link className="navbar-brand" to="/home">
+          <img
+            src={Logo}
+            width="60"
+            height="auto"
+            className="d-inline-block align-top"
+            alt="logo img"
+          />
+        </Link>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link>
+            <Link
+              to={`/messages/${loggedUser._id}`}
+              style={{ color: "#eeeeee", textDecoration: "none" }}
+            >
+              Messages
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link
+              to="/forum"
+              style={{ color: "#eeeeee", textDecoration: "none" }}
+            >
+              Forum
+            </Link>
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+      <Nav>
+        <Dropdown>
           <Dropdown.Toggle variant="second" id="dropdown-basic">
             <img
               src={`https://ui-avatars.com/api/?name=${loggedInUser.user.name}&size=32&background=random`}
@@ -44,8 +60,8 @@ export default function Navbar() {
               alt="Profile"
             />
           </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item to={`/user/${loggedUser._id}`} as={NavLink}>
+          <Dropdown.Menu style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}>
+            <Dropdown.Item to={`/user/${loggedUser._id}`} as={NavLink} style={{ color: "#eeeeee" }}>
               Profile
             </Dropdown.Item>
             <Dropdown.Item
@@ -54,66 +70,13 @@ export default function Navbar() {
                 // Fazendo processo de Logout
                 setLoggedInUser({ user: {}, token: "" });
                 localStorage.removeItem("loggedInUser");
-              }}
+              }} style={{ color: "#eeeeee" }}
             >
               Logout
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-    </div>
-
-  </div>
-</nav>
-
-
-
-
-
-
-    // {/* <nav
-    //   className="navbar navbar-dark d-flex flex-nowrap"
-    //   style={{
-    //     backgroundColor: "#3dadff",
-    //   }}
-    // >
-    //   <div className="container d-flex justify-content-start align-content-center ">
-    //     <Link className="navbar-brand" to="/home">
-    //       <p>Home</p>
-    //     </Link>
-    //     <Link className="navbar-brand" to="/forum">
-    //       <p>Forum</p>
-    //     </Link>
-    //     <Link className="navbar-brand" to={`/messages/${loggedUser._id}`}>
-    //       <p>Messages</p>
-    //     </Link>
-    //   </div>
-
-    //   <div>
-    //     <Dropdown>
-    //       <Dropdown.Toggle variant="second" id="dropdown-basic">
-    //         <img
-    //           src={`https://ui-avatars.com/api/?name=${loggedInUser.user.name}&size=32&background=random`}
-    //           className="rounded-circle"
-    //           alt="Profile"
-    //         />
-    //       </Dropdown.Toggle>
-    //       <Dropdown.Menu>
-    //         <Dropdown.Item to={`/user/${loggedUser._id}`} as={NavLink}>
-    //           Profile
-    //         </Dropdown.Item>
-    //         <Dropdown.Item
-    //           onClick={(event) => {
-    //             event.preventDefault();
-    //             // Fazendo processo de Logout
-    //             setLoggedInUser({ user: {}, token: "" });
-    //             localStorage.removeItem("loggedInUser");
-    //           }}
-    //         >
-    //           Logout
-    //         </Dropdown.Item>
-    //       </Dropdown.Menu>
-    //     </Dropdown>
-    //   </div>
-    // </nav> */}
+      </Nav>
+    </Navbar>
   );
 }
