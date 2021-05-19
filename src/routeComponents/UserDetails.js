@@ -102,7 +102,7 @@ function UserDetails() {
               <h5 className="card-title">{state.name}</h5>
               <div className="d-flex align-self-center">
                 {state.gamesList.map((x) => (
-                  <p className="card-text btn btn-outline-dark">{x}</p>
+                  <p className="card-text btn"><strong>{x}</strong></p>
                 ))}
                 <button type="button" className="btn btn-success">
                   <Link
