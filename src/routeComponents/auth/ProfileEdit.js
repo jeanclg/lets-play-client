@@ -27,7 +27,7 @@ function ProfileEdit(props) {
     { Games: "MOBA", id: 4 },
     { Games: "RACE", id: 5 },
     { Games: "SOCCER", id: 6 },
-    { Games: "OTHER", id: 7 }
+    { Games: "OTHER", id: 7 },
   ];
 
   const [options] = useState(games);
@@ -154,6 +154,10 @@ function ProfileEdit(props) {
               options={options}
               displayValue="Games"
               onSelect={handleCheck}
+              onRemove={handleCheck}
+              selectedValues={state.gamesList.map(
+                (x) => games.filter((y) => y.Games === x)[0]
+              )}
             />
           </div>
           <hr />
