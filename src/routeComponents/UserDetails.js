@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { useParams, Link, useHistory } from "react-router-dom";
 import api from "../apis/api";
-import Navbar from "../components/Navbar";
+import NavbarComponent from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function UserDetails() {
@@ -38,18 +38,18 @@ function UserDetails() {
   if (loggedUser._id === id) {
     console.log(state);
     return (
-      <div>
-        <Navbar />
+      <div style={{ backgroundColor: "#303841", color: "#eeeeee" }}>
+        <NavbarComponent />
         <div
           className="container justify-content-center d-flex align-items-center"
           style={{ minHeight: "700px" }}
         >
           <div
-            className="card align-items-center mt-5"
+            className="card align-items-center mt-4"
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
-              backgroundColor: "#3dadff",
+              backgroundColor: "#00adb5"
             }}
           >
             <img
@@ -58,7 +58,7 @@ function UserDetails() {
               alt="User Profile"
             />
             <div className="card-body text-center d-flex flex-column">
-              <h5 className="card-title">{state.name}</h5>
+              <h5 className="card-title" style={{color: "#eeeeee" }}>{state.name}</h5>
               <div className="d-flex align-self-center">
                 {state.gamesList.map((x) => (
                   <p className="card-text btn">
@@ -79,31 +79,40 @@ function UserDetails() {
     );
   } else {
     return (
-      <div>
-        <Navbar />
-        <div className="container" style={{ minHeight: "700px" }}>
+      <div style={{ backgroundColor: "#303841", color: "#eeeeee" }}>
+        <NavbarComponent />
+        <div
+          className="container justify-content-center d-flex align-items-center"
+          style={{ minHeight: "700px" }}
+        >
           <div
-            className="card"
-            style={{ width: "34rem", backgroundColor: "#3dadff" }}
+            className="card align-items-center mt-5"
+            style={{
+              minWidth: "34rem",
+              maxWidth: "34rem",
+              backgroundColor: "#00adb5"
+            }}
           >
             <img
               src={state.image_url}
               className="card-img-top"
               alt="User Profile"
             />
-            <div className="card-body">
+            <div className="card-body text-center d-flex flex-column">
               <h5 className="card-title">{state.name}</h5>
-              {state.gamesList.map((x) => (
-                <p className="card-text btn btn-outline-dark">{x}</p>
-              ))}
-              <button type="button" className="btn btn-success">
-                <Link
-                  style={{ color: "inherit" }}
-                  to={`/messages/${state._id}`}
-                >
-                  Message
-                </Link>
-              </button>
+              <div className="d-flex align-self-center">
+                {state.gamesList.map((x) => (
+                  <p className="card-text btn btn-outline-dark">{x}</p>
+                ))}
+                <button type="button" className="btn btn-success">
+                  <Link
+                    style={{ color: "inherit" }}
+                    to={`/messages/${state._id}`}
+                  >
+                    Message
+                  </Link>
+                </button>
+              </div>
             </div>
           </div>
         </div>

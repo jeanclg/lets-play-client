@@ -4,6 +4,7 @@ import { AuthContext } from "../contexts/authContext";
 import api from "../apis/api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NavbarComponent from "../components/Navbar";
 
 function PostList() {
   const authContext = useContext(AuthContext);
@@ -54,8 +55,8 @@ function PostList() {
   }
 
   return (
-    <div>
-      <Navbar />
+    <div style={{ backgroundColor: "#303841" }}>
+      <NavbarComponent />
       <div className="container" style={{ minHeight: "703px" }}>
         <div className="input-group">
           <textarea
@@ -70,6 +71,7 @@ function PostList() {
             type="button"
             onClick={handleSubmit}
             className="btn btn-primary mb-3"
+            style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
           >
             Send
           </button>
@@ -94,25 +96,32 @@ function PostList() {
                           }}
                         />
                       </td>
-                      <td className="text-break" style= {{maxWidth: "300px"}}>
+                      <td
+                        className="text-break"
+                        style={{ maxWidth: "300px", color: "#eeeeee" }}
+                      >
                         <Link
-                          style={{ color: "inherit" }}
+                          style={{ color: "#eeeeee", textDecoration: "none" }}
                           to={`/user/${x.userId._id}`}
                         >
                           <strong>{x.userId.name} diz:</strong>
                         </Link>{" "}
                         <p className="text-break">{x.text}</p>
                       </td>
-                      <td>{`${new Date(x.data).getDate()}/${
-                        new Date(x.data).getMonth() + 1
-                      }/${new Date(x.data).getFullYear()} ⠀${String(new Date(
+                      <td style={{ color: "#eeeeee" }}>{`${new Date(
                         x.data
-                      ).getHours()).padStart(2,"0")}:${String(new Date(x.data).getMinutes()).padStart(2,"0")}`}</td>
+                      ).getDate()}/${
+                        new Date(x.data).getMonth() + 1
+                      }/${new Date(x.data).getFullYear()} ⠀${String(
+                        new Date(x.data).getHours()
+                      ).padStart(2, "0")}:${String(
+                        new Date(x.data).getMinutes()
+                      ).padStart(2, "0")}`}</td>
                       <td>
                         <button
                           type="button"
                           onClick={handleDelete}
-                          className="btn btn-outline-danger"
+                          className="btn btn-danger"
                           name={x._id}
                         >
                           Delete
@@ -136,20 +145,29 @@ function PostList() {
                           }}
                         />
                       </td>
-                      <td  style= {{maxWidth: "300px"}}>
+                      <td style={{ maxWidth: "300px" }}>
                         <Link
-                          style={{ color: "inherit" }}
+                          style={{ color: "#eeeeee", textDecoration: "none" }}
                           to={`/user/${x.userId._id}`}
                         >
                           <strong>{x.userId.name} diz:</strong>
                         </Link>{" "}
-                        <p className="text-break">{x.text}</p>
+                        <p
+                          className="text-break"
+                          style={{ color: "#eeeeee", textDecoration: "none" }}
+                        >
+                          {x.text}
+                        </p>
                       </td>
-                      <td>{`${new Date(x.data).getDate()}/${
-                        new Date(x.data).getMonth() + 1
-                      }/${new Date(x.data).getFullYear()} ⠀${String(new Date(
+                      <td style={{ color: "#eeeeee" }}>{`${new Date(
                         x.data
-                      ).getHours()).padStart(2,"0")}:${String(new Date(x.data).getMinutes()).padStart(2,"0")}`}</td>
+                      ).getDate()}/${
+                        new Date(x.data).getMonth() + 1
+                      }/${new Date(x.data).getFullYear()} ⠀${String(
+                        new Date(x.data).getHours()
+                      ).padStart(2, "0")}:${String(
+                        new Date(x.data).getMinutes()
+                      ).padStart(2, "0")}`}</td>
                     </tr>
                   );
                 }
