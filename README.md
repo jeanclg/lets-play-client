@@ -5,7 +5,7 @@ Full Stack MERN Project.
 **MERN** is the acronym for MongoDB, Express JS, React JS and Node JS. The **MERN** stack is a combination of the above technologies, all based on JavaScript, used to build advanced web **applications**
 
 See the project [HERE](https://lets-play-iron.netlify.app/).
-The backend deploy [HERE](https://github.com/jeanclg/lets-play-server).
+The backend repository [HERE](https://github.com/jeanclg/lets-play-server).
 
 ## ABOUT THE PROJECT
 
