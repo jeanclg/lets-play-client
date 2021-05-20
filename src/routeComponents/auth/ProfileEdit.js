@@ -40,6 +40,7 @@ function ProfileEdit(props) {
       try {
         const response = await api.get(`/user/${loggedUser._id}`);
         setState({ ...response.data });
+        gamesList = state.gamesList;
       } catch (err) {
         console.error(err);
       }
@@ -57,6 +58,8 @@ function ProfileEdit(props) {
 
   function handleCheck(event) {
     gamesList = event.map((x) => x.Games);
+    setState({ ...state, gamesList });
+    console.log(state.gamesList);
   }
 
   async function handleFileUpload(file) {
@@ -78,7 +81,6 @@ function ProfileEdit(props) {
   async function handleSubmit(event) {
     try {
       event.preventDefault();
-
       // Fazendo um backup da imagem atual
       let uploadedImageUrl = state.image_url;
       // Verifica se o usuário selecionou um novo arquivo para trocar a imagem, pois o valor que já estará armazenado em image_url é a URL da imagem atual armazenada no Cloudinary
@@ -89,9 +91,8 @@ function ProfileEdit(props) {
       const response = await api.put(`/user/${loggedUser._id}/edit`, {
         ...state,
         image_url: uploadedImageUrl,
-        gamesList,
       });
-
+      console.log(response);
       // Redireciona programaticamente para a URL '/'
       history.push("/home");
     } catch (err) {
