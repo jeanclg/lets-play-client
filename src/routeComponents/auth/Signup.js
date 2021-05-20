@@ -17,6 +17,8 @@ function Signup(props) {
     password: null,
   });
 
+  const [erro, setErro] = useState(false);
+
   const games = [
     { Games: "Battle Royale", id: 1 },
     { Games: "FPS", id: 2 },
@@ -53,100 +55,204 @@ function Signup(props) {
       setErrors({ name: "", password: "", email: "" });
       props.history.push("/auth/login");
     } catch (err) {
+      setErro(true);
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
     }
   }
 
-  return (
-    <div style={{ backgroundColor: "#303841" }}>
-      <div className="container vh-100">
-        <h1 style={{ color: "#eeeeee" }}>Signup!</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label
-              htmlFor="signupFormName"
-              className="form-label"
-              style={{ color: "#eeeeee" }}
+  if (erro) {
+    return (
+      <div style={{ backgroundColor: "#303841" }}>
+        <div className="container vh-100">
+          <h1 style={{ color: "#eeeeee" }}>Signup!</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormName"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Name*
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                id="signupFormName"
+                value={state.name}
+                error={errors.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormEmail"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                E-mail Address*
+              </label>
+              <input
+                className="form-control"
+                type="email"
+                name="email"
+                id="signupFormEmail"
+                value={state.email}
+                error={errors.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormPassword"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Password*
+              </label>
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                id="signupFormPassword"
+                placeholder="Must have at least 8 characters, uppercase and lowercase letters, numbers and special characters."
+                value={state.password}
+                error={errors.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormGames"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Choose your games
+              </label>
+              <Multiselect
+                options={options}
+                displayValue="Games"
+                onSelect={handleCheck}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="btn btn-primary"
+              style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
             >
-              Name
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              id="signupFormName"
-              value={state.name}
-              error={errors.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label
-              htmlFor="signupFormEmail"
-              className="form-label"
+              Submit
+            </button>
+            <Link
+              to="/auth/login"
               style={{ color: "#eeeeee" }}
+              className="ml-3"
             >
-              E-mail Address
-            </label>
-            <input
-              className="form-control"
-              type="email"
-              name="email"
-              id="signupFormEmail"
-              value={state.email}
-              error={errors.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label
-              htmlFor="signupFormPassword"
-              className="form-label"
-              style={{ color: "#eeeeee" }}
-            >
-              Password
-            </label>
-            <input
-              className="form-control"
-              type="password"
-              name="password"
-              id="signupFormPassword"
-              placeholder="Must have at least 8 characters, uppercase and lowercase letters, numbers and special characters."
-              value={state.password}
-              error={errors.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label
-              htmlFor="signupFormGames"
-              className="form-label"
-              style={{ color: "#eeeeee" }}
-            >
-              Choose your games
-            </label>
-            <Multiselect
-              options={options}
-              displayValue="Games"
-              onSelect={handleCheck}
-            />
-          </div>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className="btn btn-primary"
-            style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
-          >
-            Submit
-          </button>
-          <Link to="/auth/login" style={{ color: "#eeeeee" }}>
-            Already have an account? Click here to login.
-          </Link>
-        </form>
+              Already have an account? Click here to login.
+            </Link>
+            <p className="alert alert-danger mt-3">
+              <strong>Erro de preenchimento</strong>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div style={{ backgroundColor: "#303841" }}>
+        <div className="container vh-100">
+          <h1 style={{ color: "#eeeeee" }}>Signup!</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormName"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Name*
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                id="signupFormName"
+                value={state.name}
+                error={errors.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormEmail"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                E-mail Address*
+              </label>
+              <input
+                className="form-control"
+                type="email"
+                name="email"
+                id="signupFormEmail"
+                value={state.email}
+                error={errors.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormPassword"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Password*
+              </label>
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                id="signupFormPassword"
+                placeholder="Must have at least 8 characters, uppercase and lowercase letters, numbers and special characters."
+                value={state.password}
+                error={errors.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                htmlFor="signupFormGames"
+                className="form-label"
+                style={{ color: "#eeeeee" }}
+              >
+                Choose your games
+              </label>
+              <Multiselect
+                options={options}
+                displayValue="Games"
+                onSelect={handleCheck}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="btn btn-primary"
+              style={{ backgroundColor: "#00adb5", color: "#eeeeee" }}
+            >
+              Submit
+            </button>
+            <Link
+              to="/auth/login"
+              style={{ color: "#eeeeee" }}
+              className="ml-3"
+            >
+              Already have an account? Click here to login.
+            </Link>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Signup;
