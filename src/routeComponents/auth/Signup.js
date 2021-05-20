@@ -61,9 +61,7 @@ function Signup(props) {
   return (
     <div style={{ backgroundColor: "#303841" }}>
       <div className="container vh-100">
-        <h1 style={{ color: "#eeeeee" }}>
-          Signup!
-        </h1>
+        <h1 style={{ color: "#eeeeee" }}>Signup!</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label
@@ -114,6 +112,7 @@ function Signup(props) {
               type="password"
               name="password"
               id="signupFormPassword"
+              placeholder="Must have at least 8 characters, uppercase and lowercase letters, numbers and special characters."
               value={state.password}
               error={errors.password}
               onChange={handleChange}
