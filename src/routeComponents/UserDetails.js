@@ -88,7 +88,7 @@ function UserDetails() {
           style={{ minHeight: "700px" }}
         >
           <div
-            className="card align-items-center mt-5"
+            className="card align-items-center mt-4"
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
@@ -108,15 +108,12 @@ function UserDetails() {
                     <strong>{x}</strong>
                   </p>
                 ))}
-                <button type="button" className="btn btn-success">
-                  <Link
-                    style={{ color: "inherit" }}
-                    to={`/messages/${state._id}`}
-                  >
-                    Message
-                  </Link>
-                </button>
               </div>
+              <Link style={{ color: "inherit" }} to={`/messages/${state._id}`}>
+                <button type="button" className="btn btn-success">
+                  Message
+                </button>
+              </Link>
             </div>
           </div>
         </div>
