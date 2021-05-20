@@ -45,7 +45,7 @@ function UserDetails() {
           style={{ minHeight: "700px" }}
         >
           <div
-            className="card align-items-center mt-4"
+            className="card align-items-center mt-4 mb-4"
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
@@ -88,7 +88,7 @@ function UserDetails() {
           style={{ minHeight: "700px" }}
         >
           <div
-            className="card align-items-center mt-4"
+            className="card align-items-center mt-4 mb-4"
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
