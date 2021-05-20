@@ -103,9 +103,11 @@ function MessageList() {
                       x.data
                     ).getDate()}/${new Date(x.data).getMonth() + 1}/${new Date(
                       x.data
-                    ).getFullYear()} ⠀${new Date(x.data).getHours()}:${new Date(
-                      x.data
-                    ).getMinutes()}`}</td>
+                    ).getFullYear()} ⠀${String(
+                      new Date(x.data).getHours()
+                    ).padStart(2, "0")}:${String(
+                      new Date(x.data).getMinutes()
+                    ).padStart(2, "0")}`}</td>
                     <td>
                       <button
                         type="button"
@@ -141,9 +143,11 @@ function MessageList() {
                       x.data
                     ).getDate()}/${new Date(x.data).getMonth() + 1}/${new Date(
                       x.data
-                    ).getFullYear()} ⠀${new Date(x.data).getHours()}:${new Date(
-                      x.data
-                    ).getMinutes()}`}</td>
+                    ).getFullYear()} ⠀${String(
+                      new Date(x.data).getHours()
+                    ).padStart(2, "0")}:${String(
+                      new Date(x.data).getMinutes()
+                    ).padStart(2, "0")}`}</td>
                   </tr>
                 );
               }
