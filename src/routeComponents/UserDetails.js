@@ -49,7 +49,7 @@ function UserDetails() {
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
-              backgroundColor: "#00adb5"
+              backgroundColor: "#00adb5",
             }}
           >
             <img
@@ -58,7 +58,9 @@ function UserDetails() {
               alt="User Profile"
             />
             <div className="card-body text-center d-flex flex-column">
-              <h5 className="card-title" style={{color: "#eeeeee" }}>{state.name}</h5>
+              <h5 className="card-title" style={{ color: "#eeeeee" }}>
+                {state.name}
+              </h5>
               <div className="d-flex align-self-center">
                 {state.gamesList.map((x) => (
                   <p className="card-text btn">
@@ -90,7 +92,7 @@ function UserDetails() {
             style={{
               minWidth: "34rem",
               maxWidth: "34rem",
-              backgroundColor: "#00adb5"
+              backgroundColor: "#00adb5",
             }}
           >
             <img
@@ -102,7 +104,9 @@ function UserDetails() {
               <h5 className="card-title">{state.name}</h5>
               <div className="d-flex align-self-center">
                 {state.gamesList.map((x) => (
-                  <p className="card-text btn"><strong>{x}</strong></p>
+                  <p className="card-text btn">
+                    <strong>{x}</strong>
+                  </p>
                 ))}
                 <button type="button" className="btn btn-success">
                   <Link
